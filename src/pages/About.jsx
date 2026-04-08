@@ -115,7 +115,7 @@ function About() {
                   {about.storyTitle}
                 </h2>
                 <div className="space-y-4 text-steel-600 leading-relaxed text-sm sm:text-base">
-                  {about.storyParagraphs.map((p, i) => (
+                  {(about?.storyParagraphs || [about?.story || ""]).map((p, i) => (
                     <p key={i}>{p}</p>
                   ))}
                 </div>
@@ -172,7 +172,7 @@ function About() {
                 Our Mission
               </h3>
               <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-white leading-relaxed max-w-3xl mx-auto">
-                "{about.mission}"
+                "{about?.mission || ""}"
               </p>
               {/* Decorative gold rule */}
               <div className="w-16 h-[2px] bg-gradient-to-r from-gold-400 to-gold-600 mx-auto mt-8" />
@@ -199,7 +199,7 @@ function About() {
                     Our Vision
                   </h3>
                   <p className="text-lg sm:text-xl text-navy-900 leading-relaxed font-medium">
-                    {about.vision}
+                    {about?.vision || ""}
                   </p>
                 </div>
               </div>
@@ -227,7 +227,7 @@ function About() {
           </SectionReveal>
 
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {about.values.map((value, index) => {
+            {(about?.values || []).map((value, index) => {
               const IconComp = iconMap[value.iconName] || iconMap.ShieldCheck;
               const num = String(index + 1).padStart(2, '0');
               return (
@@ -280,7 +280,7 @@ function About() {
           </SectionReveal>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
-            {about.team.map((member, index) => (
+            {(about?.team || []).map((member, index) => (
               <SectionReveal key={member.name} delay={index * 0.1}>
                 <TeamCard member={member} businessName={business.name} />
               </SectionReveal>
@@ -313,7 +313,7 @@ function About() {
             <div className="absolute left-6 sm:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-gold-500 via-gold-400 to-gold-300 sm:-translate-x-px" />
 
             <div className="space-y-8 sm:space-y-0">
-              {about.milestones.map((milestone, index) => {
+              {(about?.milestones || []).map((milestone, index) => {
                 const isEven = index % 2 === 0;
                 return (
                   <SectionReveal key={milestone.year} delay={index * 0.1}>

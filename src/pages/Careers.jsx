@@ -148,7 +148,7 @@ function Careers() {
             {/* Culture Items Column */}
             <SectionReveal direction="left">
               <div className="space-y-6 sm:space-y-8">
-                {careers.cultureItems.map((item, index) => {
+                {(careers?.cultureItems || []).map((item, index) => {
                   const IconComp = iconMap[item.iconName] || iconMap.Users;
                   return (
                     <div key={item.title} className="flex gap-4 sm:gap-5">
@@ -240,7 +240,7 @@ function Careers() {
           </SectionReveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {careers.benefits.map((benefit, index) => {
+            {(careers?.benefits || []).map((benefit, index) => {
               const IconComp =
                 iconMap[benefit.iconName] || iconMap.ShieldCheck;
               const colorSet = BENEFIT_COLORS[index % BENEFIT_COLORS.length];
@@ -293,7 +293,7 @@ function Careers() {
           </SectionReveal>
 
           <div className="space-y-4 sm:space-y-5">
-            {careers.positions.map((job, index) => {
+            {(careers?.positions || []).map((job, index) => {
               const isExpanded = expandedJob === job.id;
               return (
                 <SectionReveal key={job.id} delay={index * 0.06}>
@@ -371,7 +371,7 @@ function Careers() {
                                 Requirements
                               </h4>
                               <ul className="space-y-2.5 mb-8">
-                                {job.requirements.map((req) => (
+                                {(job?.requirements || []).map((req) => (
                                   <li
                                     key={req}
                                     className="flex items-start gap-3 text-sm text-steel-600"

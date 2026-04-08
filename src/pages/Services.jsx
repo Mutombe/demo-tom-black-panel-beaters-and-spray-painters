@@ -91,7 +91,7 @@ function Services() {
       <div className="sticky top-[72px] z-30 bg-white/95 backdrop-blur-md border-b border-earth-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex gap-1 overflow-x-auto scrollbar-hide py-1" aria-label="Service navigation">
-            {services.items.map((service, i) => (
+            {(services?.items || []).map((service, i) => (
               <button
                 key={service.slug}
                 onClick={() => scrollToService(service.slug)}
@@ -158,7 +158,7 @@ function Services() {
 
               <SectionReveal delay={0.2}>
                 <div className="flex flex-wrap gap-2 mb-10">
-                  {firstService.features.map((feature) => (
+                  {(firstService?.features || []).map((feature) => (
                     <span
                       key={feature}
                       className="bg-gold-500/10 text-gold-300 px-3 py-1.5 rounded-full text-xs font-semibold border border-gold-500/20 backdrop-blur-sm"
@@ -356,7 +356,7 @@ function Services() {
 
                       {/* Feature Pills */}
                       <div className="flex flex-wrap gap-2 mb-8">
-                        {service.features.map((feature) => (
+                        {(service?.features || []).map((feature) => (
                           <span
                             key={feature}
                             className="bg-gold-500/10 text-gold-700 px-3 py-1.5 rounded-full text-xs font-semibold"

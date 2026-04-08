@@ -19,7 +19,7 @@ function Projects() {
   const filtered =
     activeCategory === 'All'
       ? projects.items
-      : projects.items.filter((p) => p.category === activeCategory);
+      : (projects?.items || []).filter((p) => p.category === activeCategory);
 
   const heroImage =
     siteData.pageImages?.projects ||
@@ -47,7 +47,7 @@ function Projects() {
                 size={20}
                 className="text-steel-400 shrink-0"
               />
-              {projects.categories.map((cat) => (
+              {(projects?.categories || ["All"]).map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
@@ -176,7 +176,7 @@ function Projects() {
                     Services Provided
                   </h4>
                   <div className="flex flex-wrap gap-2">
-                    {selectedProject.services.map((s) => (
+                    {(selectedProject?.services || []).map((s) => (
                       <span
                         key={s}
                         className="bg-earth-50 text-steel-600 text-sm px-3 py-1.5 rounded-lg border border-earth-100"

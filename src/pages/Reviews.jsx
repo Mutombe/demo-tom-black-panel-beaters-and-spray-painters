@@ -35,7 +35,7 @@ function Reviews() {
   // Remaining reviews (everything except the featured one)
   const remainingReviews = useMemo(() => {
     if (!featuredReview) return reviews.items;
-    return reviews.items.filter(
+    return (reviews?.items || []).filter(
       (r) => r.name !== featuredReview.name || r.text !== featuredReview.text
     );
   }, [reviews.items, featuredReview]);
@@ -48,7 +48,7 @@ function Reviews() {
 
   // Calculate total reviews and average for the social proof banner
   const totalStars = useMemo(() => {
-    return reviews.ratingBreakdown.reduce((sum, item) => sum + item.count, 0);
+    return (reviews?.ratingBreakdown || []).reduce((sum, item) => sum + item.count, 0);
   }, [reviews.ratingBreakdown]);
 
   return (
@@ -218,7 +218,7 @@ function Reviews() {
 
               {/* Rating Bars */}
               <div className="space-y-3">
-                {reviews.ratingBreakdown.map((item) => {
+                {(reviews?.ratingBreakdown || []).map((item) => {
                   const percentage =
                     totalStars > 0
                       ? (item.count / totalStars) * 100

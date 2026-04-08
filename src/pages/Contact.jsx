@@ -250,7 +250,7 @@ function Contact() {
                             className="peer w-full bg-white/60 border-2 border-earth-200 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/10 rounded-xl px-5 pt-6 pb-2.5 text-navy-900 text-sm outline-none transition-all appearance-none cursor-pointer"
                           >
                             <option value="">Select a service</option>
-                            {services.items.map((s) => (
+                            {(services?.items || []).map((s) => (
                               <option key={s.title}>{s.title}</option>
                             ))}
                             <option>Other</option>
@@ -375,7 +375,7 @@ function Contact() {
                       <h3 className="text-base sm:text-lg font-bold">Business Hours</h3>
                     </div>
                     <div className="space-y-3 sm:space-y-4">
-                      {business.hours.map((h) => (
+                      {(business?.hours || []).map((h) => (
                         <div
                           key={h.day}
                           className="flex items-center justify-between text-xs sm:text-sm"
